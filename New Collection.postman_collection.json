@@ -1,0 +1,362 @@
+{
+	"info": {
+		"_postman_id": "95c0d4fb-ccf3-426c-b4b2-1d1d0a0853d3",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34647926"
+	},
+	"item": [
+		{
+			"name": "GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Prueba de estado.\r",
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Prueba de respuesta sin errores.\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.not.be.error;\r",
+							"    pm.response.to.have.jsonBody(\"\");\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"// Prueba de validez y presencia de cuerpo de respuesta.\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.be.ok;\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"// Prueba de entorno.\r",
+							"pm.test(\"environment to be production\", function () {\r",
+							"    pm.expect(pm.environment.get(\"env\")).to.equal(\"production\");\r",
+							"});\r",
+							"\r",
+							"// Prueba de tiempo de respuesta\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"\r",
+							"// Prueba de estructura de respuesta\r",
+							"pm.test(\"Response body has expected structure\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property(\"keyName\");\r",
+							"    pm.expect(jsonData.keyName).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"// Prueba de contenido de encabezado\r",
+							"pm.test(\"Content-Type header is present and correct\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Prueba de contenido específico en la respuesta\r",
+							"pm.test(\"Response body contains expected data\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property(\"id\");\r",
+							"    pm.expect(jsonData.id).to.eql(123);\r",
+							"});\r",
+							"\r",
+							"// Prueba de tamaño de respuesta\r",
+							"pm.test(\"Response body size is within acceptable limits\", function () {\r",
+							"    pm.expect(pm.response.responseSize).to.be.within(100, 1000); // adjust the range as needed\r",
+							"});\r",
+							"\r",
+							"// Prueba de coincidencia de texto en la respuesta\r",
+							"pm.test(\"Response body contains expected text\", function () {\r",
+							"    var textToFind = \"expected_text\";\r",
+							"    pm.expect(pm.response.text()).to.include(textToFind);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "httpbin.org/get",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Prueba de estado.\r",
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Prueba de respuesta sin errores.\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.not.be.error;\r",
+							"    pm.response.to.have.jsonBody(\"\");\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"// Prueba de validez y presencia de cuerpo de respuesta.\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.be.ok;\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"// Prueba de entorno.\r",
+							"pm.test(\"environment to be production\", function () {\r",
+							"    pm.expect(pm.environment.get(\"env\")).to.equal(\"production\");\r",
+							"});\r",
+							"\r",
+							"// Prueba de tiempo de respuesta\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"\r",
+							"// Prueba de estructura de respuesta\r",
+							"pm.test(\"Response body has expected structure\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property(\"keyName\");\r",
+							"    pm.expect(jsonData.keyName).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"// Prueba de contenido de encabezado\r",
+							"pm.test(\"Content-Type header is present and correct\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Prueba de contenido específico en la respuesta\r",
+							"pm.test(\"Response body contains expected data\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property(\"id\");\r",
+							"    pm.expect(jsonData.id).to.eql(123);\r",
+							"});\r",
+							"\r",
+							"// Prueba de tamaño de respuesta\r",
+							"pm.test(\"Response body size is within acceptable limits\", function () {\r",
+							"    pm.expect(pm.response.responseSize).to.be.within(100, 1000); // adjust the range as needed\r",
+							"});\r",
+							"\r",
+							"// Prueba de coincidencia de texto en la respuesta\r",
+							"pm.test(\"Response body contains expected text\", function () {\r",
+							"    var textToFind = \"expected_text\";\r",
+							"    pm.expect(pm.response.text()).to.include(textToFind);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "httpbin.org/post",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Prueba de estado.\r",
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Prueba de respuesta sin errores.\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.not.be.error;\r",
+							"    pm.response.to.have.jsonBody(\"\");\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"// Prueba de validez y presencia de cuerpo de respuesta.\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.be.ok;\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"// Prueba de entorno.\r",
+							"pm.test(\"environment to be production\", function () {\r",
+							"    pm.expect(pm.environment.get(\"env\")).to.equal(\"production\");\r",
+							"});\r",
+							"\r",
+							"// Prueba de tiempo de respuesta\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"\r",
+							"// Prueba de estructura de respuesta\r",
+							"pm.test(\"Response body has expected structure\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property(\"keyName\");\r",
+							"    pm.expect(jsonData.keyName).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"// Prueba de contenido de encabezado\r",
+							"pm.test(\"Content-Type header is present and correct\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Prueba de contenido específico en la respuesta\r",
+							"pm.test(\"Response body contains expected data\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property(\"id\");\r",
+							"    pm.expect(jsonData.id).to.eql(123);\r",
+							"});\r",
+							"\r",
+							"// Prueba de tamaño de respuesta\r",
+							"pm.test(\"Response body size is within acceptable limits\", function () {\r",
+							"    pm.expect(pm.response.responseSize).to.be.within(100, 1000); // adjust the range as needed\r",
+							"});\r",
+							"\r",
+							"// Prueba de coincidencia de texto en la respuesta\r",
+							"pm.test(\"Response body contains expected text\", function () {\r",
+							"    var textToFind = \"expected_text\";\r",
+							"    pm.expect(pm.response.text()).to.include(textToFind);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "httpbin.org/put",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"put"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Prueba de estado.\r",
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Prueba de respuesta sin errores.\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.not.be.error;\r",
+							"    pm.response.to.have.jsonBody(\"\");\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"// Prueba de validez y presencia de cuerpo de respuesta.\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.be.ok;\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"// Prueba de entorno.\r",
+							"pm.test(\"environment to be production\", function () {\r",
+							"    pm.expect(pm.environment.get(\"env\")).to.equal(\"production\");\r",
+							"});\r",
+							"\r",
+							"// Prueba de tiempo de respuesta\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"\r",
+							"// Prueba de estructura de respuesta\r",
+							"pm.test(\"Response body has expected structure\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property(\"keyName\");\r",
+							"    pm.expect(jsonData.keyName).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"// Prueba de contenido de encabezado\r",
+							"pm.test(\"Content-Type header is present and correct\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Prueba de contenido específico en la respuesta\r",
+							"pm.test(\"Response body contains expected data\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property(\"id\");\r",
+							"    pm.expect(jsonData.id).to.eql(123);\r",
+							"});\r",
+							"\r",
+							"// Prueba de tamaño de respuesta\r",
+							"pm.test(\"Response body size is within acceptable limits\", function () {\r",
+							"    pm.expect(pm.response.responseSize).to.be.within(100, 1000); // adjust the range as needed\r",
+							"});\r",
+							"\r",
+							"// Prueba de coincidencia de texto en la respuesta\r",
+							"pm.test(\"Response body contains expected text\", function () {\r",
+							"    var textToFind = \"expected_text\";\r",
+							"    pm.expect(pm.response.text()).to.include(textToFind);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "httpbin.org/delete",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"delete"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
